@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://5mt3h7d0of3y"]
+
+[ext_resource type="Script" path="res://scripts/death_zone.gd" id="1_r0xdm"]
+
+[node name="Death_Zone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_r0xdm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

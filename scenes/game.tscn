@@ -498,3 +498,6 @@ autoplay = "moving"
 
 [node name="Green_Slime" parent="." instance=ExtResource("6_2xs3a")]
 position = Vector2(184, 16)
+
+[node name="Green_Slime2" parent="." instance=ExtResource("6_2xs3a")]
+position = Vector2(-72, 15)

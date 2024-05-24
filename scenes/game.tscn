@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c71xub2yxoo7h"]
+[gd_scene load_steps=15 format=3 uid="uid://c71xub2yxoo7h"]
 
+[ext_resource type="Script" path="res://scripts/game_managergd.gd" id="1_5j62o"]
 [ext_resource type="PackedScene" uid="uid://bjp8cokpeviot" path="res://scenes/player.tscn" id="1_85m7p"]
 [ext_resource type="Texture2D" uid="uid://dkjekp42qxeci" path="res://assets/sprites/world_tileset.png" id="2_ialji"]
 [ext_resource type="PackedScene" uid="uid://b5ssmac4lkxgr" path="res://scenes/platform.tscn" id="3_v3jhc"]
 [ext_resource type="PackedScene" uid="uid://td41mog66c5i" path="res://scenes/coin.tscn" id="4_6g151"]
+[ext_resource type="FontFile" uid="uid://bplyl13xrex6i" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_g3vkv"]
 [ext_resource type="PackedScene" uid="uid://5mt3h7d0of3y" path="res://scenes/death_zone.tscn" id="5_n8y3d"]
 [ext_resource type="PackedScene" uid="uid://cm6tnymsumyou" path="res://scenes/green_slime.tscn" id="6_2xs3a"]
 
@@ -451,6 +453,10 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_5j62o")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_78dda")
 format = 2
@@ -467,6 +473,16 @@ position = Vector2(0, -45)
 zoom = Vector2(4, 4)
 limit_bottom = 200
 position_smoothing_enabled = true
+
+[node name="Score_Label" type="Label" parent="Player/Camera2D"]
+offset_left = -144.0
+offset_top = -81.0
+offset_right = -82.0
+offset_bottom = -58.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_g3vkv")
+theme_override_font_sizes/font_size = 8
+text = "Score : 0"
 
 [node name="Death_Zone" parent="." instance=ExtResource("5_n8y3d")]
 position = Vector2(432, 193)
@@ -496,8 +512,12 @@ libraries = {
 }
 autoplay = "moving"
 
-[node name="Green_Slime" parent="." instance=ExtResource("6_2xs3a")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Green_Slime" parent="Enemies" instance=ExtResource("6_2xs3a")]
 position = Vector2(184, 16)
 
-[node name="Green_Slime2" parent="." instance=ExtResource("6_2xs3a")]
+[node name="Green_Slime2" parent="Enemies" instance=ExtResource("6_2xs3a")]
 position = Vector2(-72, 15)
+
+[node name="Labels" type="Node" parent="."]

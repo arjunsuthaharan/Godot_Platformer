@@ -2,6 +2,7 @@
 
 *A simple platformer built using Godot 4 and GDScript.*
 
+![image](game_images/Godot_Platformer_Image.png)
 
 ### About
 
